@@ -1,6 +1,6 @@
 <?php
-/// Basic access authentication
-/// ToDo: connect to database
+/// Basic access authentication, header creator
+/// This file must be included and the function 'accessAuthenticate()' querried before any HTML is used, even a line feed.
 function accessAuthenticate() {	 
 	$valid_passwords = array ("user1" => "password1", "user2" => "password2");
 	$valid_users = array_keys($valid_passwords);
