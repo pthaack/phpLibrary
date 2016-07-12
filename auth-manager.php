@@ -2,7 +2,7 @@
 /// Basic access authentication
 /// ToDo: connect to database
 function accessAuthenticate() {	 
-	$valid_passwords = array ("cinaed" => "password1", "orlaith" => "password2");
+	$valid_passwords = array ("user1" => "password1", "user2" => "password2");
 	$valid_users = array_keys($valid_passwords);
 	
 	$validated = false;
