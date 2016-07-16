@@ -24,8 +24,6 @@ define('DB_COLLATE', '');
 //******** VERY IMPORTANT -- call to this function must be performed before all other functions, especially ones with TRACErs *********
 /// ToDo: connect to database
 function accessAuthenticate() {	 
-	$valid_passwords = array ("user1" => "password1", "user2" => "password2");
-	$valid_users = array_keys($valid_passwords);
 	
 	$validated = false;
 	
@@ -33,7 +31,7 @@ function accessAuthenticate() {
 	{
 		$user = $_SERVER['PHP_AUTH_USER'];
 		$pass = $_SERVER['PHP_AUTH_PW'];		
-		$validated = (in_array($user, $valid_users)) && ($pass == $valid_passwords[$user]);
+		$validated = dbUserFound($user, $pass);
 	}
 	
 	if (!$validated) {
@@ -43,8 +41,6 @@ function accessAuthenticate() {
 		return false;
 	} else {
 		return true;
-//		echo "<p>Hello {$_SERVER['PHP_AUTH_USER']}.</p>";
-//		echo "<p>You entered {$_SERVER['PHP_AUTH_PW']} as your password.</p>";
 	}
 }
 
@@ -73,6 +69,18 @@ function dbAccessClose($objConn)
 /* /Close Database */
 
 // ToDo: Safely validate login information
+function dbUserFound( $uname, $upass ) {
+	$blnFound = false;
+	$objDB = dbAccessOpen();
+	if( $objDB ) {
+		$strQuery = "SELECT `strUserName`, `strFirstName`, `strLastName`, `blnAdmin`, `blnPermission` FROM `es_users_list` " 
+			."WHERE `strUserName`='".$objDB->real_escape_string($uname)."' AND `strPassword`='".$objDB->real_escape_string($upass)."'";
+		$objResult = $objDB->query($strQuery);
+		$blnFound = ( $objResult->num_rows == 1 ? true : false );
+		dbAccessClose( $objDB );
+	}
+	return $blnFound;
+}
 
 
 
