@@ -82,32 +82,37 @@ function dbUserFound( $uname, $upass ) {
 	return $blnFound;
 }
 
+/*
 
+TABLE_NAME	COLUMN_NAME		DATA_TYPE	CHARACTER_MAXIMUM_LENGTH	COLLATION_NAME	COLUMN_TYPE
+es_users_list	idUser	int	NULL	NULL	int(11)
+es_users_list	strUserName	varchar	12	ascii_general_ci	varchar(12)
+es_users_list	strFirstName	varchar	30	utf8_general_ci	varchar(30)
+es_users_list	strLastName	varchar	30	utf8_general_ci	varchar(30)
+es_users_list	strPassword	varchar	15	ascii_general_ci	varchar(15)
+es_users_list	blnAdmin	tinyint	NULL	NULL	tinyint(1)
+es_users_list	blnPermission	tinyint	NULL	NULL	tinyint(1)
+es_users_list	blnCookie	tinyint	NULL	NULL	tinyint(1)
+es_users_list	strEmail	varchar	45	ascii_general_ci	varchar(45)
+es_users_list	strSMS	varchar	10	ascii_general_ci	varchar(10)
 
-$blnSignedIn=accessAuthenticate(); 
-?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title>DB Document</title>
-</head>
+es_venues_list	idVenue	int	NULL	NULL	int(11)
+es_venues_list	idUser	int	NULL	NULL	int(11)
+es_venues_list	dteEntry	timestamp	NULL	NULL	timestamp
+es_venues_list	strLocationName	varchar	50	ascii_general_ci	varchar(50)
+es_venues_list	strAddress	mediumtext	16777215	ascii_general_ci	mediumtext
+es_venues_list	strCity	varchar	50	ascii_general_ci	varchar(50)
+es_venues_list	strProvince	varchar	2	ascii_general_ci	varchar(2)
+es_venues_list	strPostalCode	varchar	10	ascii_general_ci	varchar(10)
+es_venues_list	strGeolocationStyle	varchar	1	ascii_general_ci	varchar(1)
+es_venues_list	strGeolocationPoints	varchar	250	ascii_general_ci	varchar(250)
+es_venues_list	strPhoneNumber	varchar	20	ascii_general_ci	varchar(20)
+es_venues_list	strContact	varchar	50	ascii_general_ci	varchar(50)
+es_venues_list	strEmail	varchar	50	ascii_general_ci	varchar(50)
+es_venues_list	strWebSite	varchar	50	ascii_general_ci	varchar(50)
+es_venues_list	txtExtraNotes	blob	65535	
 
-<body>
-<h2><?=DB_NAME?></h2>
-<h3><?=DB_CHARSET?></h3>
-<?php
-$strTest = 'FOOL a Scouts Canada site near Ayr Ontario' 
-. chr(13) .'Camp Location' . "'-- DELETE *"
-. chr(13) .'#827559 Township Road 8, Drumbo, ON N0J 1G0' 
-. chr(13) .'Township of Blandford-Blenheim, Oxford County' 
-. chr(13) .'' 
-. chr(13) .'GPS Co-ordinates 43.262218, -80.500216'; 
-$objTest = dbAccessOpen();
-if($objTest)
-{
-   echo '<p>'. $objTest->real_escape_string($strTest) .'</p>';
-   dbAccessClose($objTest);
-}
+*/
+
+// $blnSignedIn=accessAuthenticate(); 
 ?>
-</body>
-</html>
